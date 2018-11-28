@@ -1,0 +1,9 @@
+<div class='water-flow' id='waterFall'>
+  <div class='img-pane'>
+    <div class='img-item'  *ngFor='let img of imgList; let idx = index' [ngStyle]='{"left.px":img.left,"top.px":img.top}'>
+      <img [src]="img.src" (load)='loadImage($event,idx)'/>
+      <div>some description~~~~</div>
+    </div>
+  </div>
+
+</div>
