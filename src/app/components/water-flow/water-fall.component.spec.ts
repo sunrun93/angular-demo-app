@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WaterFlowComponent } from './water-flow.component';
+import { WaterFallComponent } from './water-fall.component';
 
-describe('WaterFlowComponent', () => {
-  let component: WaterFlowComponent;
-  let fixture: ComponentFixture<WaterFlowComponent>;
+describe('WaterFallComponent', () => {
+  let component: WaterFallComponent;
+  let fixture: ComponentFixture<WaterFallComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WaterFlowComponent ]
+      declarations: [ WaterFallComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WaterFlowComponent);
+    fixture = TestBed.createComponent(WaterFallComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

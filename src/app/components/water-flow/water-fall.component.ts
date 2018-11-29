@@ -1,11 +1,11 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-water-flow',
-  templateUrl: './water-flow.component.html',
-  styleUrls: ['./water-flow.component.css']
+  selector: 'app-water-fall',
+  templateUrl: './water-fall.component.html',
+  styleUrls: ['./water-fall.component.css']
 })
-export class WaterFlowComponent implements OnInit {
+export class WaterFallComponent implements OnInit {
   private imgList = [];
   private containerWidth;
   private imgPaneWidth;

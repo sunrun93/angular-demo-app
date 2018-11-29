@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WaterFlowComponent } from './water-flow/water-flow.component';
+import { WaterFallComponent } from './water-flow/water-fall.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   exports:[
-    WaterFlowComponent
+    WaterFallComponent
   ],
-  declarations: [WaterFlowComponent]
+  declarations: [WaterFallComponent]
 })
 export class ComponentsModule { }
