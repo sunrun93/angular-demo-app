@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-water-flow',
@@ -12,6 +12,8 @@ export class WaterFlowComponent implements OnInit {
   private columnNum;
   private columnHeightArr = [];
 
+  @ViewChild('waterFall') waterFallEle;
+
   constructor() { }
 
   ngOnInit() {
@@ -19,17 +21,17 @@ export class WaterFlowComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    this.getContainerWidth();
     this.columnHeightArr = [];
   }
 
-  getContainerWidth(){
+  calculateColWidth(){
     this.containerWidth = document.getElementById('waterFall').offsetWidth;
     this.imgPaneWidth = document.getElementsByClassName('img-item')[0].clientWidth+10;
     this.columnNum = Math.floor(this.containerWidth/this.imgPaneWidth);
   }
 
   initImgUrl(){
+    // 图片资源，未将私人图片上传
     for(let i =0;i<44;i++){
       let imgurl = `assets/imgs/${i+1}.jpg`
       this.imgList.push(
@@ -43,21 +45,35 @@ export class WaterFlowComponent implements OnInit {
     }
   }
 
-  loadImage(e, index) {
-    // first line
-    let imgHeight = e.target.parentElement.clientHeight;
-    this.imgList[index].height = imgHeight;
-    if (index < this.columnNum) {
-      this.imgList[index].top = 0;
-      this.imgList[index].left = this.imgPaneWidth * index;
-      this.columnHeightArr.push(imgHeight);
-    } else {
-      let minHeight = Math.min(...this.columnHeightArr);
-      let minHeightIdx = this.columnHeightArr.indexOf(minHeight);
+  @HostListener('window:load',['$event'])
+  onWindowLoaded(){
+    this.calculateColWidth();
+    this.setImgPosition();
+  }
 
-      this.imgList[index].left = minHeightIdx * this.imgPaneWidth;
-      this.imgList[index].top = minHeight + 10;
-      this.columnHeightArr[minHeightIdx] = this.columnHeightArr[minHeightIdx] + imgHeight + 10;
+  @HostListener('window:resize',['$event'])
+  onWindowResize(){
+    this.calculateColWidth();
+    this.setImgPosition();
+  }
+
+  setImgPosition(){
+    this.columnHeightArr = [];
+    const imgDomList = this.waterFallEle.nativeElement.firstChild.children;
+    for(let i = 0; i<this.imgList.length;i++){
+      let imgHeight = imgDomList[i].offsetHeight;
+      if(i<this.columnNum){
+        this.imgList[i].top = 0;
+        this.imgList[i].left = this.imgPaneWidth * i;
+        this.columnHeightArr.push(imgHeight);
+      }else{
+        let minHeight = Math.min(...this.columnHeightArr);
+        let minHeightIdx = this.columnHeightArr.indexOf(minHeight);
+  
+        this.imgList[i].left = minHeightIdx * this.imgPaneWidth;
+        this.imgList[i].top = minHeight + 10;
+        this.columnHeightArr[minHeightIdx] = this.columnHeightArr[minHeightIdx] + imgHeight + 10;
+      }
     }
   }
 
