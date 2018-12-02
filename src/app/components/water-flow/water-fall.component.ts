@@ -22,6 +22,10 @@ export class WaterFallComponent implements OnInit {
 
   ngAfterViewInit(){
     this.columnHeightArr = [];
+    this.calculateColWidth();
+    setTimeout(()=>{
+      this.setImgPosition();
+    },0)
   }
 
   calculateColWidth(){
@@ -60,17 +64,19 @@ export class WaterFallComponent implements OnInit {
   setImgPosition(){
     this.columnHeightArr = [];
     const imgDomList = this.waterFallEle.nativeElement.firstChild.children;
+    const paneLeft =  this.waterFallEle.nativeElement.parentElement.offsetLeft;
+    const paneTop = this.waterFallEle.nativeElement.parentElement.offsetTop;
     for(let i = 0; i<this.imgList.length;i++){
       let imgHeight = imgDomList[i].offsetHeight;
       if(i<this.columnNum){
-        this.imgList[i].top = 0;
-        this.imgList[i].left = this.imgPaneWidth * i;
-        this.columnHeightArr.push(imgHeight);
+        this.imgList[i].top = paneTop;
+        this.imgList[i].left = this.imgPaneWidth * i+paneLeft;
+        this.columnHeightArr.push(imgHeight+paneTop);
       }else{
         let minHeight = Math.min(...this.columnHeightArr);
         let minHeightIdx = this.columnHeightArr.indexOf(minHeight);
   
-        this.imgList[i].left = minHeightIdx * this.imgPaneWidth;
+        this.imgList[i].left = minHeightIdx * this.imgPaneWidth+paneLeft;
         this.imgList[i].top = minHeight + 10;
         this.columnHeightArr[minHeightIdx] = this.columnHeightArr[minHeightIdx] + imgHeight + 10;
       }

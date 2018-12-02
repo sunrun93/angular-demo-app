@@ -10,6 +10,8 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var app_component_1 = require("./app.component");
 var components_module_1 = require("./components/components.module");
+var app_routing_module_1 = require(".//app-routing.module");
+var tab_view_module_1 = require("./tab-view/tab-view.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -20,7 +22,9 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 platform_browser_1.BrowserModule,
-                components_module_1.ComponentsModule
+                components_module_1.ComponentsModule,
+                app_routing_module_1.AppRoutingModule,
+                tab_view_module_1.TabViewModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

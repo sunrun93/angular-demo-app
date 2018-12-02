@@ -8,23 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var water_fall_component_1 = require("./water-flow/water-fall.component");
-var test_component_1 = require("./test/test.component");
-var ComponentsModule = /** @class */ (function () {
-    function ComponentsModule() {
+var tab_a_component_1 = require("./tab-a/tab-a.component");
+var tab_b_component_1 = require("./tab-b/tab-b.component");
+var router_1 = require("@angular/router");
+var app_routing_module_1 = require("../app-routing.module");
+var TabViewModule = /** @class */ (function () {
+    function TabViewModule() {
     }
-    ComponentsModule = __decorate([
+    TabViewModule = __decorate([
         core_1.NgModule({
             imports: [
-                common_1.CommonModule
+                common_1.CommonModule,
+                router_1.RouterModule.forChild(app_routing_module_1.router)
             ],
-            exports: [
-                water_fall_component_1.WaterFallComponent
-            ],
-            declarations: [water_fall_component_1.WaterFallComponent, test_component_1.TestComponent]
+            exports: [tab_a_component_1.TabAComponent, tab_b_component_1.TabBComponent, router_1.RouterModule],
+            declarations: [tab_a_component_1.TabAComponent, tab_b_component_1.TabBComponent]
         })
-    ], ComponentsModule);
-    return ComponentsModule;
+    ], TabViewModule);
+    return TabViewModule;
 }());
-exports.ComponentsModule = ComponentsModule;
-//# sourceMappingURL=components.module.js.map
+exports.TabViewModule = TabViewModule;
+//# sourceMappingURL=tab-view.module.js.map

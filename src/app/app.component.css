@@ -1,0 +1,14 @@
+.title-bar{
+    width:100%;
+    border-bottom: 2px solid #999;
+}
+.tab-title{
+    cursor: pointer; 
+    display:inline-block;
+    padding: 10px 30px;
+    background-color: cornflowerblue;
+    font-size: 1em;
+    margin-right: 10px;
+    color: #fff;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
