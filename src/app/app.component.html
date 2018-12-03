@@ -4,7 +4,7 @@
 </div> -->
 <div class='title-bar'>
   <span class='tab-title' routerLink='tab_a'>Tab A</span>
-  <span class='tab-title' routerLink='tab_b'>Tab B</span>
+  <span class='tab-title' [routerLink]="['/tab_b','test']">Tab B</span>
 </div>
 
 <router-outlet></router-outlet>

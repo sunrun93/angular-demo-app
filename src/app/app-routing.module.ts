@@ -14,7 +14,7 @@ export const router: Route[] = [
       { path: 'todo', component: TestComponent }
     ]
   },
-  { path: 'tab_b', component: TabBComponent }
+  { path: 'tab_b/:id', component: TabBComponent }
 ];
 @NgModule({
   imports: [
