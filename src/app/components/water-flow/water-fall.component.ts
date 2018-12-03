@@ -49,13 +49,13 @@ export class WaterFallComponent implements OnInit {
     }
   }
 
-  @HostListener('window:load',['$event'])
+  @HostListener('window:load',['$event']) // window onload trigger
   onWindowLoaded(){
     this.calculateColWidth();
     this.setImgPosition();
   }
 
-  @HostListener('window:resize',['$event'])
+  @HostListener('window:resize',['$event']) // window resize trigger
   onWindowResize(){
     this.calculateColWidth();
     this.setImgPosition();
