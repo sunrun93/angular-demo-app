@@ -5,10 +5,32 @@
 .tab-title{
     cursor: pointer; 
     display:inline-block;
-    padding: 10px 30px;
-    background-color: cornflowerblue;
+    height:32px;
+    background-color: goldenrod;
     font-size: 1em;
     margin-right: 10px;
     color: #fff;
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.tab-title::before{
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-right: 5px solid goldenrod;
+    border-bottom: 16px solid goldenrod;
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    border-top: 16px solid rgba(0, 0, 0, 0);
+    transform: translateX(-10px);
+}
+.tab-title::after{
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid goldenrod;
+    border-bottom: 16px solid goldenrod;
+    border-right: 5px solid rgba(0, 0, 0, 0);
+    border-top: 16px solid rgba(0, 0, 0, 0);
+    transform: translateX(10px);
 }

@@ -2,10 +2,12 @@
 <!-- <div style="text-align:center">
     <app-water-fall></app-water-fall>
 </div> -->
-<div class='title-bar'>
-  <span class='tab-title' routerLink='tab_a'>Tab A</span>
-  <span class='tab-title' [routerLink]="['/tab_b','test']">Tab B</span>
-</div>
+<ul class='title-bar'>
+  <li class='tab-title' routerLink='tab_a'>Tab A</li>
+  <li class='tab-title' [routerLink]="['/tab_b','test']">Tab B</li>
+  <li class='tab-title' [routerLink]="['/tab_b','test']">Tab C</li>
+  <li class='tab-title' [routerLink]="['/tab_b','test']">Tab D</li>
+</ul>
 
 <router-outlet></router-outlet>
 
