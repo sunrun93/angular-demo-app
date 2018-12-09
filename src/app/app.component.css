@@ -11,6 +11,7 @@
     margin-right: 15px;
     color: #fff;
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    vertical-align: top;
 }
 .tab-title::before{
     content: '';
@@ -45,4 +46,9 @@
 .tab-title.active-link::after{
     border-left: 5px solid #acda20;
     border-bottom: 16px solid #acda20;
+}
+
+.tab-title a{
+    vertical-align: top;
+    line-height: 32px;
 }
