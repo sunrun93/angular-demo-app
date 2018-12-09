@@ -11,6 +11,7 @@ export class WaterFallComponent implements OnInit {
   private imgPaneWidth;
   private columnNum;
   private columnHeightArr = [];
+  private imgSizeArr = [];
 
   @ViewChild('waterFall') waterFallEle;
 
@@ -23,9 +24,7 @@ export class WaterFallComponent implements OnInit {
   ngAfterViewInit(){
     this.columnHeightArr = [];
     this.calculateColWidth();
-    setTimeout(()=>{
-      this.setImgPosition();
-    },0)
+
   }
 
   calculateColWidth(){
@@ -59,6 +58,13 @@ export class WaterFallComponent implements OnInit {
   onWindowResize(){
     this.calculateColWidth();
     this.setImgPosition();
+  }
+
+  onImgload(event) {
+    this.imgSizeArr.push({
+      width: event.srcElement.offsetWidth,
+      height: event.srcElement.offsetHeight
+    })
   }
 
   setImgPosition(){
