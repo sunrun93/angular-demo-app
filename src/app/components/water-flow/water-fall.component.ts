@@ -26,7 +26,9 @@ export class WaterFallComponent implements OnInit {
   ngAfterViewInit(){
     this.columnHeightArr = [];
     this.calculateColWidth();
-    this.setImgPosition();
+    setTimeout(() => {
+      this.setImgPosition();
+    }, 0);
   }
 
   calculateColWidth(){
