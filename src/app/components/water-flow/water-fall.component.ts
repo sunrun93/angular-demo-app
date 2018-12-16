@@ -12,6 +12,8 @@ export class WaterFallComponent implements OnInit {
   private columnNum;
   private columnHeightArr = [];
   private imgSizeArr = [];
+  private imgPaneTop;
+  private imgPaneLeft;
 
   @ViewChild('waterFall') waterFallEle;
 
@@ -24,7 +26,7 @@ export class WaterFallComponent implements OnInit {
   ngAfterViewInit(){
     this.columnHeightArr = [];
     this.calculateColWidth();
-
+    this.setImgPosition();
   }
 
   calculateColWidth(){
@@ -34,14 +36,16 @@ export class WaterFallComponent implements OnInit {
   }
 
   initImgUrl(){
+    this.imgPaneTop= this.waterFallEle.nativeElement.parentElement.offsetTop;
+    this.imgPaneLeft = this.waterFallEle.nativeElement.parentElement.offsetLeft;
     // 图片资源，未将私人图片上传
-    for(let i =0;i<44;i++){
+    for(let i =0;i<36;i++){
       let imgurl = `assets/imgs/${i+1}.jpg`
       this.imgList.push(
         {
           src: imgurl,
-          left: 0,
-          top: 0,
+          left: this.imgPaneLeft,
+          top: this.imgPaneTop,
           height:0
         }
       );
@@ -50,7 +54,6 @@ export class WaterFallComponent implements OnInit {
 
   @HostListener('window:load',['$event']) // window onload trigger
   onWindowLoaded(){
-    this.calculateColWidth();
     this.setImgPosition();
   }
 
@@ -70,19 +73,17 @@ export class WaterFallComponent implements OnInit {
   setImgPosition(){
     this.columnHeightArr = [];
     const imgDomList = this.waterFallEle.nativeElement.firstChild.children;
-    const paneLeft =  this.waterFallEle.nativeElement.parentElement.offsetLeft;
-    const paneTop = this.waterFallEle.nativeElement.parentElement.offsetTop;
     for(let i = 0; i<this.imgList.length;i++){
       let imgHeight = imgDomList[i].offsetHeight;
       if(i<this.columnNum){
-        this.imgList[i].top = paneTop;
-        this.imgList[i].left = this.imgPaneWidth * i+paneLeft;
-        this.columnHeightArr.push(imgHeight+paneTop);
+        this.imgList[i].top = this.imgPaneTop;
+        this.imgList[i].left = this.imgPaneWidth * i+ this.imgPaneLeft;
+        this.columnHeightArr.push(imgHeight+this.imgPaneTop);
       }else{
         let minHeight = Math.min(...this.columnHeightArr);
         let minHeightIdx = this.columnHeightArr.indexOf(minHeight);
   
-        this.imgList[i].left = minHeightIdx * this.imgPaneWidth+paneLeft;
+        this.imgList[i].left = minHeightIdx * this.imgPaneWidth+this.imgPaneLeft;
         this.imgList[i].top = minHeight + 10;
         this.columnHeightArr[minHeightIdx] = this.columnHeightArr[minHeightIdx] + imgHeight + 10;
       }
