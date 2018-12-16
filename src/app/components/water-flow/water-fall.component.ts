@@ -41,7 +41,7 @@ export class WaterFallComponent implements OnInit {
     this.imgPaneTop= this.waterFallEle.nativeElement.parentElement.offsetTop;
     this.imgPaneLeft = this.waterFallEle.nativeElement.parentElement.offsetLeft;
     // 图片资源，未将私人图片上传
-    for(let i =0;i<36;i++){
+    for(let i =0;i<35;i++){
       let imgurl = `assets/imgs/${i+1}.jpg`
       this.imgList.push(
         {

@@ -12,7 +12,7 @@ export const router: Route[] = [
     path: 'tab_a', 
     component: TabAComponent, 
     children: [
-      { path: '', component: WaterFallComponent },
+      { path: '',pathMatch: 'prefix', redirectTo: 'water_fall'},
       { path: 'water_fall', component: WaterFallComponent },
       { path: 'todo', component: TestComponent }
     ]
