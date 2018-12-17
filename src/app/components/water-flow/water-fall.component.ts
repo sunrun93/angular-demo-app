@@ -40,7 +40,7 @@ export class WaterFallComponent implements OnInit {
   initImgUrl(){
     this.imgPaneTop= this.waterFallEle.nativeElement.parentElement.offsetTop;
     this.imgPaneLeft = this.waterFallEle.nativeElement.parentElement.offsetLeft;
-    // 图片资源，未将私人图片上传
+    // 图片资源,测试项目中仅上传35张图片
     for(let i =0;i<35;i++){
       let imgurl = `assets/imgs/${i+1}.jpg`
       this.imgList.push(
@@ -74,14 +74,17 @@ export class WaterFallComponent implements OnInit {
 
   setImgPosition(){
     this.columnHeightArr = [];
+    // 动态设置每个图片的位置
     const imgDomList = this.waterFallEle.nativeElement.firstChild.children;
     for(let i = 0; i<this.imgList.length;i++){
       let imgHeight = imgDomList[i].offsetHeight;
       if(i<this.columnNum){
+        // 首先设置第一行的照片的位置，并记录当前行的最大高度
         this.imgList[i].top = this.imgPaneTop;
         this.imgList[i].left = this.imgPaneWidth * i+ this.imgPaneLeft;
         this.columnHeightArr.push(imgHeight+this.imgPaneTop);
       }else{
+        // 从第二行开始，首先找到当前最矮的列
         let minHeight = Math.min(...this.columnHeightArr);
         let minHeightIdx = this.columnHeightArr.indexOf(minHeight);
   

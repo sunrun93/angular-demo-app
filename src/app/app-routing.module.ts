@@ -7,7 +7,7 @@ import { WaterFallComponent } from '../app/components/water-flow/water-fall.comp
 import { TestComponent} from '../app/components/test/test.component';
 
 export const router: Route[] = [
-  { path: '', pathMatch: 'full', redirectTo: '/tab_a' },
+  { path: '', pathMatch: 'full', redirectTo: '/tab_a/water_fall' },
   {
     path: 'tab_a', 
     component: TabAComponent, 
