@@ -8,4 +8,20 @@ angular在核心组件中为我们提供了router模块，项目中以一个小�
 2. Tab B
 3. Tab C
 4. Tab D
+首先，在app文件目录下新建app-routing.module,并将其引入到app.module模块中。在app-routing.module中定义对应的路由：
+```
+export const router: Route[] = [
+  { path: '', pathMatch: 'full', redirectTo: '/tab_a/water_fall' },
+  {
+    path: 'tab_a', 
+    component: TabAComponent, 
+    children: [
+      { path: '',pathMatch: 'prefix', redirectTo: 'water_fall'},
+      { path: 'water_fall', component: WaterFallComponent },
+      { path: 'todo', component: TestComponent }
+    ]
+  },
+  { path: 'tab_b/:id', component: TabBComponent }
+];
+```
 
