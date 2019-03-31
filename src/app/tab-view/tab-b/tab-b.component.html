@@ -1,3 +1,44 @@
 <p>
-  tab-b [{{testId}}] works!
+  列举简单的数组操作方法如下:
 </p>
+<div class='row-group'>
+  <h3>数组排序</h3>
+  <div>
+      string数组排序：
+      <button (click)="mySort(strArray)">按字母升序</button>
+      <button (click)="mySort(strArray,null ,false)">按字母降序</button>
+      <ul *ngFor='let item of strArray'>
+        <li>{{item}}</li>
+      </ul>
+  </div>
+  <div>
+      number数组排序：
+      <button (click)="mySort(nbrArray)">按字母升序</button>
+      <button (click)="mySort(nbrArray,null ,false)">按字母降序</button>
+      <ul *ngFor='let item of nbrArray'>
+        <li>{{item}}</li>
+      </ul>
+  </div>
+  <div>
+    对象数组排序：
+    <button (click)="mySort(objArray,'title')">按字母升序</button>
+    <button (click)="mySort(objArray,'title',false)">按字母降序</button>
+    <button (click)="mySort(objArray,'favorite')">按数字升序</button>
+    <button (click)="mySort(objArray,'favorite',false)">按数字降序</button>
+    <ul *ngFor='let item of objArray'>
+      <li>{{item.title}} -- {{item.favorite}}</li>
+    </ul>
+  </div>
+</div>
+
+<div>
+
+  <div>
+      <button (click)="objArrayColne = myClone(objArray)">对象数组神拷贝</button>
+      克隆数组：
+      <ul *ngFor='let item of objArrayColne'>
+          <li>{{item.title}} -- {{item.favorite}}</li>
+      </ul>
+  </div>
+
+</div>
