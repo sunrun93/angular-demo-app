@@ -24,4 +24,4 @@ export const router: Route[] = [
   { path: 'tab_b/:id', component: TabBComponent }
 ];
 ```
-我们将默认的路由地址指向tab_a的water_fall组件的地址。
+我们将默认的路由地址指向tab_a的water_fall组件的地址。然后，在app-routing.module中定义
